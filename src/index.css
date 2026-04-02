@@ -1,0 +1,147 @@
+:root {
+  --bg: linear-gradient(180deg, #fcfaf5 0%, #f8f4ee 100%);
+  --surface: #f5f0e9;
+  --surface-muted: #efe8df;
+  --surface-strong: #fffdfa;
+  --border: rgba(64, 46, 21, 0.08);
+  --text: #695e53;
+  --text-soft: #9a8d80;
+  --text-strong: #26221d;
+  --muted-strong: #7b6d5f;
+  --accent: #d5a22f;
+  --accent-strong: #8a6a1b;
+  --card-bg: #25211f;
+  --card-text: #fffaf4;
+  --card-muted: rgba(255, 244, 232, 0.72);
+  --card-link: #fff8ef;
+  --card-favorite-bg: rgba(255, 253, 250, 0.96);
+  --card-favorite-color: #b9aa95;
+  --card-favorite-active-bg: #fff1ee;
+  --card-favorite-active-color: #db5b58;
+  --favorite-card-bg: #fbfaf5;
+  --favorite-card-text: #26221d;
+  --favorite-card-muted: #9a8d80;
+  --favorite-card-link: #d5a22f;
+  --pill-bg: #2d8e4f;
+  --pill-text: #f0fff2;
+  --shadow-soft:
+    0 18px 35px rgba(60, 43, 23, 0.06),
+    0 8px 14px rgba(60, 43, 23, 0.04);
+  --heading: 'Avenir Next', 'Trebuchet MS', sans-serif;
+  --body: 'Avenir Next', 'Segoe UI', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
+  background: #f7f2eb;
+}
+
+:root[data-theme='dark'] {
+  --bg: linear-gradient(180deg, #171513 0%, #1e1a17 100%);
+  --surface: #272220;
+  --surface-muted: #2e2825;
+  --surface-strong: #201c19;
+  --border: rgba(255, 228, 206, 0.1);
+  --text: #dbc8be;
+  --text-soft: #b79d92;
+  --text-strong: #fff5ef;
+  --muted-strong: #d0beae;
+  --accent: #e3b344;
+  --accent-strong: #ffd991;
+  --card-bg: #2d2824;
+  --card-text: #fff5ef;
+  --card-muted: rgba(255, 245, 239, 0.72);
+  --card-link: #ffe8c8;
+  --card-favorite-bg: rgba(44, 37, 33, 0.96);
+  --card-favorite-color: #d8c1ab;
+  --card-favorite-active-bg: rgba(92, 48, 45, 0.98);
+  --card-favorite-active-color: #ffb9ae;
+  --favorite-card-bg: #26211e;
+  --favorite-card-text: #fff5ef;
+  --favorite-card-muted: #b79d92;
+  --favorite-card-link: #ffd991;
+  --pill-bg: #377d41;
+  --pill-text: #f2fff0;
+  --shadow-soft:
+    0 26px 50px rgba(0, 0, 0, 0.34),
+    0 12px 18px rgba(0, 0, 0, 0.24);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #f7f2eb;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--text);
+  font: 500 0.98rem/1.55 var(--body);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--body);
+}
+
+button,
+input,
+select,
+textarea {
+  appearance: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--text-strong);
+  font-family: var(--heading);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.1rem, 3vw, 1.55rem);
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(213, 162, 47, 0.35);
+  outline-offset: 3px;
+}
