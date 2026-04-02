@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Loader from '../components/Loader'
 import { getRecipeById, type RecipeDetail as RecipeDetailType } from '../services/api'
 
@@ -18,6 +18,7 @@ function RecipeDetail({
   const [recipe, setRecipe] = useState<RecipeDetailType | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
+  const stepsSectionRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     let isMounted = true
@@ -142,7 +143,7 @@ function RecipeDetail({
           </div>
         </section>
 
-        <section className="detail-panel">
+        <section className="detail-panel" ref={stepsSectionRef}>
           <div className="detail-actions">
             <button
               className={`favorite-button ${favoriteIdSet.has(recipe.id) ? 'is-active' : ''}`}
@@ -176,7 +177,11 @@ function RecipeDetail({
           <strong>Ready to start?</strong>
           <span>Select the first step, gather your ingredients, and begin.</span>
         </div>
-        <button className="primary-button" type="button">
+        <button
+          className="primary-button"
+          onClick={() => stepsSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          type="button"
+        >
           Start Cooking
         </button>
       </section>

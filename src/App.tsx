@@ -94,6 +94,7 @@ function App() {
         setLastListRoute(nextRoute)
       }
 
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       setRoute(nextRoute)
       setTransitionState('enter')
     }
@@ -255,7 +256,7 @@ function App() {
             }
             type="button"
           >
-            {theme === 'light' ? '◐' : '◑'}
+            <span className={`theme-toggle-core is-${theme}`} />
           </button>
         </div>
       </header>

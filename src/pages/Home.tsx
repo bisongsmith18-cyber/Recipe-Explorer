@@ -30,6 +30,8 @@ function Home({
   const [isBootstrapping, setIsBootstrapping] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
   const [categoryWarning, setCategoryWarning] = useState('')
+  const [signupEmail, setSignupEmail] = useState('')
+  const [signupMessage, setSignupMessage] = useState('')
   const showEditorialLayout = !debouncedSearch.trim() && selectedCategory === 'All'
   const featuredRecipes = recipes.slice(0, 3)
   const bannerRecipe = recipes[3] ?? recipes[0]
@@ -39,6 +41,27 @@ function Home({
 
   const triggerSearch = () => {
     setDebouncedSearch(searchValue)
+  }
+
+  const handleSignup = () => {
+    const trimmedEmail = signupEmail.trim()
+
+    if (!trimmedEmail || !trimmedEmail.includes('@')) {
+      setSignupMessage('Enter a valid email first.')
+      return
+    }
+
+    try {
+      const currentSignups = window.localStorage.getItem('recipe-explorer-signups')
+      const parsedSignups = currentSignups ? (JSON.parse(currentSignups) as string[]) : []
+      const nextSignups = [...new Set([...parsedSignups, trimmedEmail])]
+      window.localStorage.setItem('recipe-explorer-signups', JSON.stringify(nextSignups))
+      setSignupMessage('You are signed up for weekly notes.')
+      setSignupEmail('')
+    } catch {
+      setSignupMessage('Sign up saved for this session.')
+      setSignupEmail('')
+    }
   }
 
   useEffect(() => {
@@ -218,14 +241,25 @@ function Home({
               <p>
                 Get exclusive recipes, seasonal tips, and chef notes delivered weekly.
               </p>
-              <div className="cta-actions">
-                <button className="ghost-button" type="button">
-                  inspiration@hub.com
-                </button>
-                <button className="dark-button" type="button">
+              <form
+                className="cta-actions"
+                onSubmit={(event) => {
+                  event.preventDefault()
+                  handleSignup()
+                }}
+              >
+                <input
+                  className="signup-input"
+                  onChange={(event) => setSignupEmail(event.target.value)}
+                  placeholder="inspiration@hub.com"
+                  type="email"
+                  value={signupEmail}
+                />
+                <button className="dark-button" type="submit">
                   Sign Me Up
                 </button>
-              </div>
+              </form>
+              {signupMessage ? <p className="signup-message">{signupMessage}</p> : null}
             </div>
 
             <div className="cta-photo-frame">

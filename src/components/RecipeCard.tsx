@@ -16,7 +16,9 @@ function RecipeCard({ isFavorite, onOpen, onToggleFavorite, recipe }: RecipeCard
         onClick={onToggleFavorite}
         type="button"
       >
-        ♥
+        <span className="favorite-heart" aria-hidden="true">
+          ❤
+        </span>
       </button>
 
       <button className="recipe-card-media" onClick={onOpen} type="button">
